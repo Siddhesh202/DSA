@@ -14,12 +14,15 @@ public:
                 right.insert(nums[j]);
             
             // Swap elements if leftMax > rightMin
-            if(left.size() > 0 && right.size() > 0 && *left.rbegin() > *right.begin()) {
-                int temp = *left.rbegin();
-                left.erase(prev(left.end()));
-                left.insert(*right.begin());
-                right.erase(right.begin());
-                right.insert(temp);
+            if(!right.empty() && *left.rbegin() > *right.begin()) {
+                int temp1 = *left.rbegin();
+                int temp2 = *right.begin();
+
+                left.erase(left.find(temp1));
+                right.erase(right.find(temp2));
+                
+                left.insert(temp2);
+                right.insert(temp1);
             }
 
             // If window size == k then store median
