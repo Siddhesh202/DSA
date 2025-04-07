@@ -1,11 +1,9 @@
 class Solution {
 public:
     bool solve(vector<int> &nums, int i, int tar, vector<vector<int>> &dp) {
-        if(tar < 0) return false;
-
         if(tar == 0) return true;
 
-        if(i >= nums.size()) return false;
+        if(tar < 0 || i >= nums.size()) return false;
 
         if(dp[i][tar] != -1) return dp[i][tar];
 
