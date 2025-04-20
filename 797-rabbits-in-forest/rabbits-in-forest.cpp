@@ -8,17 +8,10 @@ public:
             mp[answers[i]]++;
         
         for(auto &p : mp) {
-            int key = p.first;
             int val = p.second;
-
-            cout << key << endl;
-            
-            int grpSize = key+1;
+            int grpSize = p.first+1;
             if(val < grpSize) ans += grpSize;
-
-            else {
-                ans += (ceil(val * 1.0 / grpSize) * grpSize);
-            }
+            else ans += (ceil(val * 1.0 / grpSize) * grpSize);
         }
 
         return ans;
