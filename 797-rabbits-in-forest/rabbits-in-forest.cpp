@@ -1,10 +1,10 @@
 class Solution {
 public:
     int numRabbits(vector<int>& answers) {
-        int n = answers.size(), ans = 0;
+        int ans = 0;
         unordered_map<int,int> mp;
 
-        for(int i = 0; i < n; i++)
+        for(int i = 0; i < answers.size(); i++)
             mp[answers[i]]++;
         
         for(auto &p : mp) {
