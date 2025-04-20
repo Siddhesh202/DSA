@@ -10,8 +10,7 @@ public:
         for(auto &p : mp) {
             int val = p.second;
             int grpSize = p.first+1;
-            if(val < grpSize) ans += grpSize;
-            else ans += (ceil(val * 1.0 / grpSize) * grpSize);
+            ans += (ceil(val * 1.0 / grpSize) * grpSize);
         }
 
         return ans;
