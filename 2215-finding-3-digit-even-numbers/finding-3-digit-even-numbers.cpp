@@ -13,10 +13,8 @@ public:
                 mp[j]--;
                 for(int k = 0; k <= 8; k+=2) {
                     if(mp[k] == 0) continue;
-                    mp[k]--;
                     int num = (i * 100) + (j * 10) + k;
                     res.push_back(num);
-                    mp[k]++;
                 }
                 mp[j]++;
             }
