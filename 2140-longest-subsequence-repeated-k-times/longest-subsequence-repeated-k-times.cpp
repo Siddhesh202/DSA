@@ -63,4 +63,7 @@ public:
         return result;
 
     }
+
+    // (n/k) max length of subseq
+    // TC = n * (n/k)!
 };
