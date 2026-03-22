@@ -27,20 +27,8 @@ public:
 
         }
 
-        // 2. Try creating even parity
-        for(int i = 0; i < nums1.size(); i++) {
-            int num = nums1[i];
 
-            // check if there is an odd elem smaller than this
-            if(num % 2 != 0 && minOdd >= num) {
-                canBeEven = false;
-                break;
-            }
-
-        }
-
-
-        return canBeOdd || canBeEven;
+        return canBeOdd;
     }
 };
 
