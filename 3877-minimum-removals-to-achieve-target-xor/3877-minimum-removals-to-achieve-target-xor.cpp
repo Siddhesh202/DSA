@@ -1,28 +1,32 @@
 class Solution {
 public:
     int n;
-    int dp[40][16384];
-    int solve(vector<int>& nums, int idx, int currXor, int target) {
-        if(idx >= n) {
-            if(currXor == target) return 0;
-            return INT_MIN;
+    int tab(vector<int>& nums, int target) {
+        vector<int> prev(16384, INT_MIN);
+        vector<int> curr(16384, INT_MIN);
+
+        // base case
+        prev[target] = 0;
+
+        for(int idx = n-1; idx >= 0; idx--) {
+            for(int currXor = 0; currXor < 16384; currXor++) {
+
+                int take = 1 + prev[currXor ^ nums[idx]];
+                int notake = prev[currXor];
+
+                curr[currXor] = max(take, notake);
+            }
+
+            prev = curr;
         }
 
-        if(dp[idx][currXor] != -1) return dp[idx][currXor];
-
-        // take
-        int take = 1 + solve(nums, idx+1, currXor ^ nums[idx], target);
-
-        // no take
-        int notake = solve(nums, idx+1, currXor, target);
-
-        return dp[idx][currXor] = max(take, notake);
+        return prev[0];
     }
 
     int minRemovals(vector<int>& nums, int target) {
         n = nums.size();
-        memset(dp, -1, sizeof(dp));
-        int maxKeep = solve(nums, 0, 0, target);
+        // memset(dp, -1, sizeof(dp));
+        int maxKeep = tab(nums, target);
 
         if(maxKeep < 0) return -1;
         return n - maxKeep;
