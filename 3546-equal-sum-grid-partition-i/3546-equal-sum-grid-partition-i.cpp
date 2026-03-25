@@ -14,6 +14,8 @@ public:
             } 
         }
 
+        if(total % 2) return false;
+
         // Try for horizontal cuts
         ll horiSum = 0;
         for(int row = 0; row < m; row++) {
