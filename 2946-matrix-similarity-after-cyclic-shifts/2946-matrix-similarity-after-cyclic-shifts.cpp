@@ -8,20 +8,18 @@ public:
         if(k == 0) return true;
 
         // Check what happens if there are duplicates and how to handle it
-        for(int i = 1; i <= k; i++) {
-            vector<vector<int>> temp = arr;
-            for(int row = 0; row < rows; row++) {
-                for(int col = 0; col < cols; col++) {
-                    // For even no rows, do a cyclic left
-                    if(row%2) temp[row][(col-1+cols)%cols] = arr[row][col];
+        vector<vector<int>> temp = arr;
+        for(int row = 0; row < rows; row++) {
+            for(int col = 0; col < cols; col++) {
+                // For even no rows, do a cyclic left
+                if(row%2) temp[row][(col-k+cols)%cols] = arr[row][col];
 
-                    // For odd rows, do a cyclic right
-                    else temp[row][(col+1)%cols] = arr[row][col];
-                }
+                // For odd rows, do a cyclic right
+                else temp[row][(col+k)%cols] = arr[row][col];
             }
-
-            arr = temp;
         }
+
+        arr = temp;
 
         return arr == mat;
     }
