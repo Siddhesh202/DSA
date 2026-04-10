@@ -13,10 +13,8 @@ public:
             int n = arr.size();
             if(n >= 3) {
                 for(int i = 0; i < n-2; i++) {
-                    for(int j = i+1; j < n-1; j++) {
-                        for(int k = j+1; k < n; k ++) 
-                            ans = min(ans, abs(arr[i]-arr[j]) + abs(arr[j]-arr[k]) + abs(arr[k]-arr[i]));
-                    }
+                    int j = i+1, k = i+2;
+                    ans = min(ans, abs(arr[i]-arr[j]) + abs(arr[j]-arr[k]) + abs(arr[k]-arr[i]));
                 }
             }
         }
