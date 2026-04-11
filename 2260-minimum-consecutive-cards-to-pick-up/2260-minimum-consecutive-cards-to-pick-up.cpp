@@ -1,15 +1,13 @@
 class Solution {
 public:
     int minimumCardPickup(vector<int>& cards) {
-        unordered_map<int,vector<int>> mp;
+        unordered_map<int,int> lastOccurence;
         int ans = INT_MAX;
 
-        for(int i = 0; i < cards.size(); i++) mp[cards[i]].push_back(i);
-
-        for(auto &[card, arr] : mp) {
-            if(arr.size() >= 2) {
-                for(int i = 0; i < arr.size()-1; i++) ans = min(ans, arr[i+1] - arr[i]+1);
-            }
+        for(int i = cards.size()-1; i >= 0; i--) {
+            int card = cards[i];
+            if(lastOccurence.count(card)) ans = min(ans, lastOccurence[card] - i + 1);
+            lastOccurence[card] = i;
         }
         
         if(ans == INT_MAX) return -1;
