@@ -11,7 +11,7 @@ public:
 
                 int diff = nums[j] - nums[i];
 
-                if(dp[j] != -1 && diff >= -target && diff <= target) 
+                if(dp[j] != -1 && abs(diff) <= target) 
                     dp[i] = max(dp[i], 1 + dp[j]);
             }
         }
