@@ -1,10 +1,10 @@
 class Solution {
 public:
     int n;
-    int dp[1001][1001];
+    int dp[1001];
     int solve(vector<int>& arr, int i, int d) {
         
-        if(dp[i][d] != -1) return dp[i][d];
+        if(dp[i] != -1) return dp[i];
 
         int left = 0, right = 0;
 
@@ -20,7 +20,7 @@ public:
             right = max(right, solve(arr, j, d));
         }
 
-        return dp[i][d] = 1 + max(left, right);
+        return dp[i] = 1 + max(left, right);
     }
 
     int maxJumps(vector<int>& arr, int d) {
